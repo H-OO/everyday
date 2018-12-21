@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>test</title>
+    <style>
+      body, html {
+        height: 100%;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .wrap {
+        overflow: scroll;
+        border: 20px solid #fff;
+        width: 200px;
+        height: 200px;
+        background-color: #ccc;
+      }
+      .main1 {
+        width: 50px;
+        height: 90%;
+        background-color: #666;
+      }
+      .main2 {
+        width: 80px;
+        height: 400px;
+        background-color: #888;
+        line-height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="main1">111</div>
+      <div class="main2">111</div>
+    </div>
+    <script>
+      const wrap = document.querySelector('.wrap');
+      const main2 = document.querySelector('.main2');
+      wrap.onclick = function() {
+        main2.scrollIntoView({
+          behavior: 'smooth', // instant 瞬间 | smooth 平滑
+          block: 'center' // start 顶部对齐 | center 居中对齐 | end 底部对齐
+        });
+      }
+    </script>
+  </body>
+</html>
