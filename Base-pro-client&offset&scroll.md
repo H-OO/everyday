@@ -2,8 +2,6 @@
 
 **家族成员**
 
----
-
 分别如下：
 
 |    client    |    offset    |    scroll    |
@@ -21,9 +19,9 @@
 - Element.scrollTop // 获取或设置
 - Element.scrollLeft // 获取或设置
 
-**使用 scrollTop 成员的正确方式**
-
 ---
+
+**使用 scrollTop 成员的正确方式**
 
 - 父元素需设置`overflow: hidden`
 - 子元素高度大于父元素高度
