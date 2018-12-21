@@ -4,11 +4,10 @@
 
 日常任务: 早晚两篇技术文章, 学习关联知识点
 
-文件名规则: `[Base|Extend|Lib]-[hot]-name.md`
+文件名规则: `[Base|Extend|Lib]-[hot|pro]-name.md`
 
 - Base 基础知识
 - Extend 扩展知识
 - Lib 框架知识
-
 - hot 热门面试题
 - pro 开发中遇到

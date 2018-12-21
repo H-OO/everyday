@@ -1,6 +1,8 @@
-# 盒模型
+## 盒模型
 
 **什么是盒模型**
+
+---
 
 简单来说每个 html 标签都是一个方块，这个方块又包着几个小方块
 
@@ -8,18 +10,18 @@
 
 它们的关系是：margin 包着 border 包着 padding 包着 content
 
----
-
 **盒子有多大**
+
+---
 
 - F12 检查元素 `size = margin + padding + border + content` 【mpbc】
 - Element.client[Width|Height] `size = padding + content` 【pc】
 - Element.offset[Width|Height] `size = padding + border + content` 【pbc】
 - Element.scroll[Width|Height] `size = padding + content` 【pc】
 
----
-
 **怪异盒模型**
+
+---
 
 元素设置`box-sizing: border-box`开启怪异模式
 

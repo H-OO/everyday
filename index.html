@@ -14,39 +14,28 @@
         padding: 0;
       }
       .wrap {
-        overflow: scroll;
+        overflow: hidden;
         border: 20px solid #fff;
         width: 200px;
         height: 200px;
         background-color: #ccc;
       }
-      .main1 {
+      .main {
         width: 50px;
-        height: 90%;
+        height: 120%;
         background-color: #666;
-      }
-      .main2 {
-        width: 80px;
-        height: 400px;
-        background-color: #888;
-        line-height: 400px;
       }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <div class="main1">111</div>
-      <div class="main2">111</div>
+      <div class="main"></div>
     </div>
     <script>
       const wrap = document.querySelector('.wrap');
-      const main2 = document.querySelector('.main2');
-      wrap.onclick = function() {
-        main2.scrollIntoView({
-          behavior: 'smooth', // instant 瞬间 | smooth 平滑
-          block: 'center' // start 顶部对齐 | center 居中对齐 | end 底部对齐
-        });
-      }
+      const main = document.querySelector('.main');
+      wrap.scrollTop = 100; // 当子元素高大于父元素的高
+      console.log(wrap.scrollTop);
     </script>
   </body>
 </html>
