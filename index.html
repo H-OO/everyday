@@ -15,16 +15,21 @@
       }
       .wrap {
         overflow: hidden;
-        border: 20px solid #fff;
+        /* border: 20px solid #000; */
+        /* padding: 20px; */
         width: 200px;
         height: 200px;
         background-color: #ccc;
       }
       .main {
+        margin: 20px;
+        padding: 10px;
+        border: 12px solid red;
         width: 50px;
         height: 120%;
         background-color: #666;
       }
+      
     </style>
   </head>
   <body>
@@ -35,7 +40,6 @@
       const wrap = document.querySelector('.wrap');
       const main = document.querySelector('.main');
       wrap.scrollTop = 100; // 当子元素高大于父元素的高
-      console.log(wrap.scrollTop);
     </script>
   </body>
 </html>
