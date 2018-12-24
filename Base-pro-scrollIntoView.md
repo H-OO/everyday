@@ -1,4 +1,4 @@
-## scrollIntoView
+# scrollIntoView
 
 需求场景：移动端输入框聚焦时会调起键盘，此时可视区变小，输入框可能被遮挡
 
