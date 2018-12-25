@@ -1,6 +1,31 @@
 # Array
 
-**ES5 API**
+**Array API**
+
+- Array.from // 将两类对象`array-like(object)|iterable(Set&Map)`转为真正的数组
+- Array.isArray // 判断参数是否为数组类型
+- Array.of // 将参数转成数组，弥补`Array()与new Array()`方法的不足
+
+```ts
+// Array.from { (arr, handler: (item: any) => any) => Array<any> }
+const arr: Array<number|undefined> = [1, , 2, , 3];
+const res: Array<number> = Array.from(arr, (item: number|undefined) => {
+  return item || 0;
+});
+arr // [1, undefined, 2, undefined, 3]
+res // [1, 0, 2, 0, 3]
+
+// Array.isArray { (arr: Array<any>) => boolean }
+const arr: Array<number> = [1, 2, 3];
+const res: boolean = Array.isArray(arr);
+res // true
+
+// Array.of { (arg: any) => Array<any> }
+const arr = new Array.of(1);
+arr // [1]
+```
+
+**实例 API ES5**
 
 - concat // 拼接数组
 - every // 遍历数组，判断所有元素是否满足同一条件
@@ -26,7 +51,7 @@
 
 ---
 
-**ES6 API**
+**实例 API ES6**
 
 - [x] copyWithin // 将指定区间`[)`的元素替换到其他位置上
 - find // 找出第一个符合条件的数组元素，全部不符合条件则返回 undefined
@@ -70,7 +95,7 @@ arr.join('-') // 1-2-3
 // lastIndexOf { (target: any) => number }
 arr.lastIndexOf(2) // 1
 
-// map { (handler: (v: number, i: number) => Array<any>) => Array<any> }
+// map { (handler: (v: any, i: number) => any) => Array<any> }
 arr.map((v: number, i: number) => {
   // v i
   return v;
@@ -82,10 +107,10 @@ arr.pop() // [1, 2]
 // push { (v: any) => Array<any> }
 arr.push(4) // [1, 2, 3, 4]
 
-// reduce { (handler: (a: number, b: number) => a + b) => number }
+// reduce { (handler: (a: number, b: number) => number) => number }
 arr.reduce((a: number, b: number) => a + b) // 6
 
-// reduceRight { (handler: (a: number, b: number) => a + b) => number }
+// reduceRight { (handler: (a: number, b: number) => number) => number }
 arr.reduceRight((a: number, b: number) => a + b) // 6
 
 // reverse { () => Array<any> }
