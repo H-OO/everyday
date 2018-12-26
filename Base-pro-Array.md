@@ -169,3 +169,43 @@ _arr.flatMap((v: number) => [v, v * 2]) // [1, 2, 2, 4, 3, 6]
 // includes { (target: any) => boolean }
 arr.includes(1) // true
 ```
+
+---
+
+**数组排序**
+
+```ts
+const arr: Array<number> = [3, 4, 1, 5, 2];
+
+// 通过API
+arr.sort((a, b) => a - b);
+arr // [1, 2, 3, 4, 5]
+
+// 冒泡排序
+function bubbleSort(arr: Array<string|number>) {
+  for (let i = 0, l = arr.length; i < l; i++) {
+    // arr[i] 对源数组每个元素进行比较
+    for (let j = i + 1; j < l; j++) {
+      // console.log('count');
+      if (arr[i] > arr[j]) {
+        // 从小到大排序
+        const tmp = arr[i];
+        arr[i] = arr[j]; // 换位
+        arr[j] = tmp;
+      }
+    }
+  }
+}
+bubbleSort(arr);
+arr // [1, 2, 3, 4, 5]
+```
+
+---
+
+**数字+字母+汉字排序**
+
+```ts
+const arr: Array<any> = [9,8,7,6,5,1,'在', '我', '里', '阿','z','a','h','m'];
+arr.sort((a, b) => a.toString().localeCompare(b));
+arr // [1, 5, 6, 7, 8, 9, "阿", "里", "我", "在", "a", "h", "m", "z"]
+```
