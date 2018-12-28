@@ -1,14 +1,87 @@
 # Object
 
+**Object 方法**
+
+- assign // 属性值为复杂类型就是浅拷贝
+- create // 创建一个新对象，将原型对象替换成参数对象
+- is // 判断两个参数是否全等
+- getOwnPropertyDescriptors // 获取参数对象属性的描述对象
+- setPrototypeOf // 替换对象的原型
+- keys // 获取对象的属性名(不含不可枚举)
+- values // 获取对象的属性值(不含不可枚举)
+- entries // 获取对象的属性名与属性值
+
+---
+
 **实例 API ES5**
 
 - hasOwnProperty // 判断属性是否为实例私有，也就是属性是否在构造函数中
 - isPrototypeOf // 判断原型对象是否一致
-- propertyIsEnumerable // 判断实例能否使用 for-in
+- propertyIsEnumerable // 属性是否可枚举
 - toLocaleString // [object Object]
 - toString // [object Object]
 - valueOf // self
 
 ---
 
-**实例 API ES6**
+**属性描述**
+
+- value // 属性值
+- writable // 是否可写
+- enumerable // 是否可枚举
+- configurable // 是否可删除
+
+---
+
+**举个栗子**
+
+```ts
+const o = {
+  arr: [1, 2, 3]
+};
+
+// assign { (p1: object, p2?: object, p3?: object) => object }
+Object.assign({}, o) // { arr: [1, 2, 3] }
+
+// create { (p: object) => object }
+Object.create(o) // {}，原型 === o
+
+// is { (p1: any, p2: any) => boolean }
+Object.is([], []) // false
+
+// getOwnPropertyDescriptors { (p: object) => object }
+Object.getOwnPropertyDescriptors(o)
+// { arr: { value: [1, 2, 3], writable: true, enumerable: true, configurable: true } }
+
+// setPrototypeOf { (p1: object, p2: object) => object }
+Object.setPrototypeOf({name: 'y'}, o) // {name: 'y'}，原型 === o
+
+// keys { (p: object) => Array<string> }
+Object.keys(o) // ['arr']
+
+// values { (p: object) => Array<any> }
+Object.values(o) // [[1, 2, 3]]
+
+// entries { (p: object) => Array<Array<string|any>> }
+Object.entries(o) // [['arr', [1, 2, 3]]]
+
+// hasOwnProperty { (key: string) => boolean }
+o.hasOwnProperty('arr') // true
+
+// isPrototypeOf { (p: object) => boolean }
+const p = {};
+Object.setPrototypeOf(o, p);
+p.isPrototypeOf(o) // true
+
+// propertyIsEnumerable { (p: string) => boolean }
+o.propertyIsEnumerable('arr') // true
+
+// toLocaleString { () => string }
+o.toLocaleString() // [object Object]
+
+// toString { () => string }
+o.toString() // [object Object]
+
+// valueOf { () => object }
+o.valueOf() // self
+```
