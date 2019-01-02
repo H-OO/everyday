@@ -74,4 +74,15 @@
 const str = 'matrix(1, 0, 0, 1, -100, 0)';
 const res = str.match(/[^a-z\(\)\s\,]+/g).slice(4);
 console.log(res); // ['-100', '0']
+
+// 参数序列化
+const str = 'http://xxx.com/a/b.html?username=1&password=123';
+const res = str.match(/\?.*/)[0].slice(1).split('&');
+const obj: any = {};
+res.forEach((v) => {
+  const tmp = v.split('=');
+  const key = tmp[0];
+  const value = tmp[1];
+  obj[key] = value;
+});
 ```
