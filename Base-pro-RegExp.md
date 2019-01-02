@@ -86,3 +86,33 @@ res.forEach((v) => {
   obj[key] = value;
 });
 ```
+
+---
+
+**具名组匹配**
+
+匹配具有固定结构的字符串
+
+```ts
+// 基本使用
+const r: RegExp = /(\d{3})-(\d{4})-(\d{4})/;
+const phone: string = '150-0000-0000';
+r.exec(phone) // ['150-0000-0000', '150', '0000', '0000', ...]
+
+// 增加可读性, 添加组名, 格式：?<name>
+const r: RegExp = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
+const date: string = '2019-1-1';
+r.exec(date) // ['2018-12-04','2018','12','04',groups:{year:'2018',month:'12',day:'04'},...]
+// 解构赋值
+const {
+  groups: { year, month, day }
+}: any = r.exec(date);
+year // 2018
+month // 12
+day // 04
+
+// 通过`\k<name>`复用`(?<name>)`
+const r: RegExp = /(?<name>abc)-\k<name>/; // 等同于 /(?<name>abc)-(?<name>abc)/
+r.test('abc-abc') // true
+r.test('abc-ab') // false
+```
