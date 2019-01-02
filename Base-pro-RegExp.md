@@ -102,14 +102,14 @@ r.exec(phone) // ['150-0000-0000', '150', '0000', '0000', ...]
 // 增加可读性, 添加组名, 格式：?<name>
 const r: RegExp = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
 const date: string = '2019-1-1';
-r.exec(date) // ['2018-12-04','2018','12','04',groups:{year:'2018',month:'12',day:'04'},...]
+r.exec(date) // ['2019-1-1','2019','1','1',groups:{year:'2019',month:'1',day:'1'},...]
 // 解构赋值
 const {
   groups: { year, month, day }
 }: any = r.exec(date);
-year // 2018
-month // 12
-day // 04
+year // 2019
+month // 1
+day // 1
 
 // 通过`\k<name>`复用`(?<name>)`
 const r: RegExp = /(?<name>abc)-\k<name>/; // 等同于 /(?<name>abc)-(?<name>abc)/
