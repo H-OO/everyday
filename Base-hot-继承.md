@@ -1,13 +1,16 @@
 # 继承
 
+概念：子类继承父类的属性  
+最优：需协调引用类型与相同方法共享
+
 **继承方式**
 
-- 原型链继承
-- 借用构造函数继承
-- 组合继承
-- 原型式继承
-- 寄生式继承
-- 寄生组合式继承 // 经典继承
+- 原型链继承 // C.prototype = new F()
+- 借用构造函数继承 // F.apply(this)
+- 组合继承 // 常用 C.prototype = new F()、F.apply(this)
+- 原型式继承 // Object.create
+- 寄生式继承 // 增强 Object.create 返回的对象
+- 寄生组合式继承 // 
 
 ---
 
@@ -88,6 +91,7 @@ const o1 = Object.create(prototype, {
 });
 o1.name // yy
 o1.todo // f
+// 缺点：原型包含引用类型，实例会相互影响
 
 /**
  * 寄生式继承
@@ -101,6 +105,7 @@ function createNative(prototype) {
 }
 function createP(prototype, name) {
   const o = createNative(prototype);
+  // 增强
   o.name = name;
   return o;
 }
@@ -115,5 +120,11 @@ p.todo // f
 /**
  * 寄生组合式继承
  */
-function 
+function F() {
+  
+}
+F.prototype.todo = function() {}
+function C() {
+  F.apply(this, arguments)
+}
 ```
